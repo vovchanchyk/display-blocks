@@ -1,10 +1,13 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useContext } from 'react';
+import { BlocksContext } from '../Privider/Provider';
 import styles from './Table.module.css';
 
 // eslint-disable-next-line arrow-body-style
 const Table = () => {
-  const blocks = null;
+  const { blocks } = useContext(BlocksContext);
+  console.log(blocks);
   if (!blocks) return null;
 
   const headCreator = (arr) => (
