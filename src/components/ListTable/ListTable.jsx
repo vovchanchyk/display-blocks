@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
@@ -12,6 +13,7 @@ export const ListTable = () => {
   const [sort, sortDispatch] = useReducer(sortReducer, { inc: true, key: '' });
 
   console.log(sort);
+  const sortKeys = ['blockId', 'created', 'endorsements'];
   const history = useHistory();
   const { blocks } = useContext(BlocksContext);
   if (!blocks.length) return null;
@@ -19,6 +21,18 @@ export const ListTable = () => {
     <tr>
       {arr.map((el, i) => {
         const key = `key-${el}-${i}`;
+        if (sortKeys.find((v) => el === v)) {
+          const icon = !sort.inc && sort.key === el ? '˄' : '˅';
+          const action = {
+            type: sort.inc ? 'decrement' : 'increment',
+            key: el,
+          };
+          return (
+            <th key={key} onClick={() => sortDispatch(action)}>
+              {el} <span>{icon}</span>
+            </th>
+          );
+        }
         return <th key={key}>{el}</th>;
       })}
     </tr>
