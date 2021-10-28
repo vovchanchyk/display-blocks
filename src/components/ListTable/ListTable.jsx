@@ -1,8 +1,9 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 /* eslint-disable no-console */
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { BlocksContext } from '../Privider/Provider';
+import { BlocksContext } from '../Provider/Provider';
 import Table from '../Table';
 
 export const ListTable = () => {

@@ -1,6 +1,7 @@
+/* eslint-disable import/no-unresolved */
 import React, { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
-import { BlocksContext } from '../../components/Privider/Provider';
+import { BlocksContext } from '../../components/Provider/Provider';
 
 export const Block = () => {
   const location = useLocation();
