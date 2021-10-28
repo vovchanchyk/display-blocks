@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { BlocksContext } from '../Privider/Provider';
+import { BlocksContext } from '../Provider/Provider';
 import styles from './Pagination.module.css';
 
 const Pagination = () => {

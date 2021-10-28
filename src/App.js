@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-unused-vars */
 import React from 'react';
@@ -9,7 +10,7 @@ import {
 } from 'react-router-dom';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import Provider from './components/Privider/Provider';
+import Provider from './components/Provider/Provider';
 import { Block } from './pages/Block';
 import { Blocks } from './pages/Blocks';
 

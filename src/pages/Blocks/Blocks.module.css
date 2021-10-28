@@ -2,25 +2,17 @@
   display: grid;
   grid-row-gap: 30px;
   padding: 40px;
-  border: solid;
   align-items: center;
 }
 
 .title {
-  border: solid;
-  text-align: center;
-  width: fit-content;
-  align-self: center;
-  }
-  
-  .table { 
+   margin: 103px auto;
   }
   
   .select {
+    display: flex;
   }
   
   .pagination {
-    border: solid;
-    width: fit-content;
     justify-self: flex-end;
   }
