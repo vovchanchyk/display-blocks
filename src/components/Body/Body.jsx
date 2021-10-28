@@ -1,32 +1,13 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import Pagination from '../Pagination/Pagination';
-import Table from '../Table/Table';
-import Title from '../Title';
-
-import styles from './Body.module.css';
+import PropTypes from 'prop-types';
 
 // eslint-disable-next-line arrow-body-style
-const Body = () => {
-  return (
-    <>
-      <div className={styles.title}>
-        <Title />
-      </div>
-      <div className={styles.select}>
-        <p>Per page:</p>
-        <select>
-          <option value='15'>15</option>
-          <option value='20'>20</option>
-        </select>
-      </div>
-      <div className={styles.table}>
-        <Table />
-      </div>
-      <div className={styles.pagination}>
-        <Pagination />
-      </div>
-    </>
-  );
+export const Body = ({ children }) => {
+  return <>{children}</>;
 };
 
-export default Body;
+Body.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
