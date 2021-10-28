@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-
 import styles from './Table.module.css';
 
 // eslint-disable-next-line arrow-body-style
 const Table = () => {
+  
   const blocks = null;
   if (!blocks) return null;
+  
   const headCreator = (arr) => (
     <tr>
       {arr.map((el, i) => {

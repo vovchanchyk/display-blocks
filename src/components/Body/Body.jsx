@@ -10,3 +10,4 @@ export const Body = ({ children }) => {
 Body.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
