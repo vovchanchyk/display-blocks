@@ -1,8 +1,19 @@
 import React from 'react';
-import './App.css';
+import { Body } from './components/Body';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import { Blocks } from './pages/Blocks';
 
 function App() {
-  return <p>Hello world</p>;
+  return (
+    <>
+      <Header />
+      <Body>
+        <Blocks />
+      </Body>
+      <Footer />
+    </>
+  );
 }
 
 export default App;
