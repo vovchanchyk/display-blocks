@@ -1,28 +1,18 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './Table.module.css';
 
-// eslint-disable-next-line arrow-body-style
-const Table = () => {
-  const blocks = null;
-  if (!blocks) return null;
+const Table = ({ head, body }) => (
+  <table className={styles.table}>
+    <thead>{head}</thead>
+    <tbody>{body}</tbody>
+  </table>
+);
 
-  const headCreator = (arr) => (
-    <tr>
-      {arr.map((el, i) => {
-        const key = `key-${el}-${i}`;
-        return <th key={key}>{el}</th>;
-      })}
-    </tr>
-  );
-  const rowCreator = (arr) => arr.map((str) => <td>{str}</td>);
-
-  return (
-    <table className={styles.table}>
-      <thead />
-      <tbody />
-    </table>
-  );
+Table.propTypes = {
+  head: PropTypes.node.isRequired,
+  body: PropTypes.node.isRequired,
 };
 
 export default Table;
