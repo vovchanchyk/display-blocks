@@ -1,8 +1,13 @@
 .table {
-  width: 1200px;
   height: auto;
+  width: 100%;
 }
 
-.row {
-  border: 1px solid #000;
+.table th{
+  padding: 3px 5px;
+  border: 1.3px solid brown;
+}
+.table td{
+  padding: 3px 5px;
+  border: 1.3px solid brown;
 }

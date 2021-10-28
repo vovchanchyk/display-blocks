@@ -1,18 +1,26 @@
+.blocks{
+  display: grid;
+  grid-row-gap: 30px;
+  padding: 40px;
+  border: solid;
+  align-items: center;
+}
+
 .title {
-    margin: 103px auto;
+  border: solid;
+  text-align: center;
+  width: fit-content;
+  align-self: center;
   }
   
-  .table {
-    width: 1200px;
-    margin: 28px auto;
+  .table { 
   }
   
   .select {
-    margin-left: 120px;
-    display: flex;
   }
   
   .pagination {
-    margin-bottom: 300px;
-    margin-left: 1100px;
+    border: solid;
+    width: fit-content;
+    justify-self: flex-end;
   }
