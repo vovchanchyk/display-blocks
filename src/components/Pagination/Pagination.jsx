@@ -1,7 +1,3 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 import React, { useContext } from 'react';
 import { BlocksContext } from '../Privider/Provider';
 import styles from './Pagination.module.css';
@@ -15,19 +11,15 @@ const Pagination = () => {
   if (offset === 0) {
     firstIndex = offset;
     lastIndex = limit * 3;
-    console.log(0);
   } else if (offset === limit) {
     firstIndex = 0;
     lastIndex = limit * 3;
-    console.log('limit');
   } else if (offset === totalPages) {
     firstIndex = offset - limit * 4;
     lastIndex = offset;
-    console.log('last page');
   } else {
     firstIndex = offset - limit * 2;
     lastIndex = offset + limit;
-    console.log('others');
   }
 
   for (let i = firstIndex; i <= lastIndex; i += limit) {
@@ -36,20 +28,22 @@ const Pagination = () => {
 
   return (
     <div>
-      {pages.map(el=> {
-      const page = el/limit + 1;
-      const className = (offset === el)? styles.active:'';
-       return (
-          <button key={el}
-          type='button'
-          className = {className}
-          onClick={()=>handleOffset(el)}
+      {pages.map((el) => {
+        const page = el / limit + 1;
+        const className = offset === el ? styles.active : '';
+        return (
+          <button
+            key={el}
+            type='button'
+            className={className}
+            onClick={() => handleOffset(el)}
           >
-          {page}
+            {page}
           </button>
-          )})}
-     </div>
-  )
+        );
+      })}
+    </div>
+  );
 };
 
 export default Pagination;

@@ -1,9 +1,12 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 /* eslint-disable no-console */
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { BlocksContext } from '../Privider/Provider';
 import Table from '../Table';
 
 export const ListTable = () => {
+  const history = useHistory();
   const { blocks } = useContext(BlocksContext);
   if (!blocks.length) return null;
   const headCreator = (arr) => (
@@ -16,11 +19,20 @@ export const ListTable = () => {
   );
 
   const rowCreator = (arr) =>
-    arr.map((str, i) => {
-      console.log(str[1]);
-      const key = `cellkey-${i}-${str[0]}`;
-      if (str[0] === 'blockId') return <td key={key}>link</td>;
-      return <td key={key}>{str[1] || '___'}</td>;
+    arr.map((cell, i) => {
+      const key = `cellkey-${i}-${cell[0]}`;
+      if (cell[0] === 'blockId')
+        return (
+          <td
+            key={key}
+            role='button'
+            onKeyPress={() => history.push(`/blocks/${cell[1]}`)}
+            onClick={() => history.push(`/blocks/${cell[1]}`)}
+          >
+            {cell[1]}
+          </td>
+        );
+      return <td key={key}>{cell[1] || '___'}</td>;
     });
 
   const titles = headCreator(Object.keys(blocks[0]));

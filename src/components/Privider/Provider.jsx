@@ -12,7 +12,6 @@ const Provider = ({ children }) => {
   const [offset, setOffset] = useState(0);
   const [blocks, setBlocks] = useState([]);
   const [totalCount, setTotalCount] = useState('');
-
   useEffect(async () => {
     const blocksFromApi = await getDataFromApi(offset, limit);
     setBlocks(blocksFromApi.blocks);
