@@ -14,13 +14,16 @@ const Provider = ({ children }) => {
   const [totalCount, setTotalCount] = useState('');
 
   useEffect(async () => {
-    const blocksFromApi = await getDataFromApi();
-    setBlocks(blocksFromApi);
+    const blocksFromApi = await getDataFromApi(offset, limit);
+    setBlocks(blocksFromApi.blocks);
+    setTotalCount(blocksFromApi.totalCount);
   }, [limit, offset]);
 
   const blocksContextValue = {
     limit,
+    handleLimit: (val) => setLimit(val),
     offset,
+    handleOffset: (val) => setOffset(val),
     totalCount,
     blocks,
   };

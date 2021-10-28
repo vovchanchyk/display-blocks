@@ -2,14 +2,13 @@
 import React from 'react';
 import styles from './Blocks.module.css';
 import Pagination from '../../components/Pagination/Pagination';
-import Table from '../../components/Table/Table';
-import Title from '../../components/Title';
+import { ListTable } from '../../components/ListTable';
 
 export const Blocks = () => {
   return (
-    <>
+    <div className={styles.blocks}>
       <div className={styles.title}>
-        <Title />
+        <h1>Blocks</h1>
       </div>
       <div className={styles.select}>
         <p>Per page:</p>
@@ -19,11 +18,11 @@ export const Blocks = () => {
         </select>
       </div>
       <div className={styles.table}>
-        <Table />
+        <ListTable />
       </div>
       <div className={styles.pagination}>
         <Pagination />
       </div>
-    </>
+    </div>
   );
 };
