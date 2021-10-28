@@ -1,8 +1,16 @@
 import React from 'react';
-import './App.css';
+import Body from './components/Body';
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 function App() {
-  return <p>Hello world</p>;
+  return (
+    <>
+      <Header />
+      <Body />
+      <Footer />
+    </>
+  );
 }
 
 export default App;
