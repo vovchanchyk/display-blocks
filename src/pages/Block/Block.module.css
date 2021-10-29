@@ -4,14 +4,17 @@
 }
 
 .block {
-  width: 1200px;
   height: auto;
   margin: 0 auto 200px;
-  border: 1px solid #000;
   display: flex;
   justify-content: space-between;
+  padding: 40px;
 }
 
 .block__side {
   width: 600px;
+  
+}
+.block__side > div{
+  padding: 10px;
 }

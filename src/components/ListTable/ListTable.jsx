@@ -1,3 +1,5 @@
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/no-named-as-default-member */
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 import React, { useContext, useReducer } from 'react';
 import { useHistory } from 'react-router-dom';
