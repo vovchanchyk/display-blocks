@@ -1,4 +1,6 @@
-// eslint-disable-next-line arrow-body-style
-export const sortHandler = (nameOfProperty, arrayOfObjects) => {
-  return arrayOfObjects.sort((a, b) => b[nameOfProperty] - a[nameOfProperty]);
+export const sortHandler = (nameOfProperty, arrayOfObjects, mode) => {
+  if (mode)
+    return arrayOfObjects.sort((a, b) => b[nameOfProperty] - a[nameOfProperty]);
+
+  return arrayOfObjects.sort((a, b) => a[nameOfProperty] - b[nameOfProperty]);
 };

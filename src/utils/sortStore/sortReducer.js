@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-const initialState = { inc: true, key: '' };
-
 function sortReducer(state, action) {
   switch (action.type) {
     case 'increment':
