@@ -1,0 +1,18 @@
+.blocks{
+  display: grid;
+  grid-row-gap: 30px;
+  padding: 40px;
+  align-items: center;
+}
+
+.title {
+   margin: 103px auto;
+  }
+  
+  .select {
+    display: flex;
+  }
+  
+  .pagination {
+    justify-self: flex-end;
+  }
