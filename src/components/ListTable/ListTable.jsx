@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 import React, { useContext, useReducer } from 'react';
 import { useHistory } from 'react-router-dom';
+import { blocksListHandler } from '../../utils/blocksListHandler';
 import { sortHandler } from '../../utils/sortHandler';
 import sortReducer from '../../utils/sortStore/sortReducer';
 import { BlocksContext } from '../Provider/Provider';
@@ -51,9 +52,13 @@ export const ListTable = () => {
       return <td key={key}>{cell[1] || '___'}</td>;
     });
 
-  const titles = headCreator(Object.keys(blocks[0]));
+  const ListBlocks = blocksListHandler(blocks);
 
-  const rowsData = sort.key ? sortHandler(sort.key, blocks, sort.inc) : blocks;
+  const titles = headCreator(Object.keys(ListBlocks[0]));
+
+  const rowsData = sort.key
+    ? sortHandler(sort.key, ListBlocks, sort.inc)
+    : ListBlocks;
 
   const rows = rowsData.map((block, i) => {
     const row = rowCreator(Object.entries(block));
