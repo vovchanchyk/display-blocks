@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable import/no-unresolved */
 import React, { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -8,7 +9,7 @@ export const Block = () => {
   const location = useLocation();
   const blockId = Number(location.pathname.slice(8));
   const { blocks } = useContext(BlocksContext);
-  const block = blocks.find((el) => el.blockId === blockId);
+  const block = blocks.find((el) => el.level === blockId);
 
   if (!block) return null;
   return (

@@ -1,12 +1,16 @@
-/* eslint-disable import/no-unresolved */
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
-/* eslint-disable no-console */
-import React, { useContext } from 'react';
+import React, { useContext, useReducer } from 'react';
 import { useHistory } from 'react-router-dom';
+import { blocksListHandler } from '../../utils/blocksListHandler';
+import { sortHandler } from '../../utils/sortHandler';
+import sortReducer from '../../utils/sortStore/sortReducer';
 import { BlocksContext } from '../Provider/Provider';
 import Table from '../Table';
 
 export const ListTable = () => {
+  const [sort, sortDispatch] = useReducer(sortReducer, { inc: true, key: '' });
+
+  const sortKeys = ['blockId', 'created', 'endorsements'];
   const history = useHistory();
   const { blocks } = useContext(BlocksContext);
   if (!blocks.length) return null;
@@ -14,6 +18,18 @@ export const ListTable = () => {
     <tr>
       {arr.map((el, i) => {
         const key = `key-${el}-${i}`;
+        if (sortKeys.find((v) => el === v)) {
+          const icon = !sort.inc && sort.key === el ? '˄' : '˅';
+          const action = {
+            type: sort.inc ? 'decrement' : 'increment',
+            key: el,
+          };
+          return (
+            <th key={key} onClick={() => sortDispatch(action)}>
+              {el} <span>{icon}</span>
+            </th>
+          );
+        }
         return <th key={key}>{el}</th>;
       })}
     </tr>
@@ -36,8 +52,15 @@ export const ListTable = () => {
       return <td key={key}>{cell[1] || '___'}</td>;
     });
 
-  const titles = headCreator(Object.keys(blocks[0]));
-  const rows = blocks.map((block, i) => {
+  const ListBlocks = blocksListHandler(blocks);
+
+  const titles = headCreator(Object.keys(ListBlocks[0]));
+
+  const rowsData = sort.key
+    ? sortHandler(sort.key, ListBlocks, sort.inc)
+    : ListBlocks;
+
+  const rows = rowsData.map((block, i) => {
     const row = rowCreator(Object.entries(block));
     const rowkey = `cellkey-${i}`;
     return <tr key={rowkey}>{row}</tr>;
