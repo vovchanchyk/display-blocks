@@ -1,36 +1,36 @@
-/* eslint-disable no-console */
-/* eslint-disable import/no-unresolved */
-import React, { useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { BlocksContext } from '../../components/Provider/Provider';
+import { getDataApiBlock } from '../../api';
 import styles from './Block.module.css';
 
 export const Block = () => {
   const location = useLocation();
   const blockId = Number(location.pathname.slice(8));
-  const { blocks } = useContext(BlocksContext);
-  const block = blocks.find((el) => el.level === blockId);
-
-  if (!block) return null;
+  const [block, setBlock] = useState(null);
+  useEffect(async () => {
+    const blockdata = await getDataApiBlock(blockId);
+    setBlock(blockdata.block);
+  }, []);
+  if (!block) return <h2>...loading</h2>;
   return (
     <>
       <h1 className={styles.title}>Block: </h1>
       <div className={styles.block}>
         <div className={styles.block__side}>
-          <div>Hash: </div>
-          <div>Created at: </div>
-          <div>Baker: {block.backer}</div>
-          <div>Baker&apos;s fee: </div>
-          <div>Baker&apos;s priority: </div>
-          <div>Transactions volume: </div>
+          <div>Hash: {block.hash} </div>
+          <div>Created at: {block.timestamp} </div>
+          <div>Baker: {block.baker}</div>
+          <div>Baker&apos;s fee: {block.fees}</div>
+          <div>Baker&apos;s priority: {block.priority}</div>
+          <div>Transactions volume: {block.volume}</div>
         </div>
         <div className={styles.block__side}>
-          <div>Block time: </div>
-          <div>Block fitness: </div>
-          <div>Gas used: </div>
-          <div>Protocol version: </div>
-          <div>Cycle: </div>
-          <div>Cycle position: </div>
+          <div>Block time: {block.blockTime}</div>
+          <div>Block fitness: {block.fitness}</div>
+          <div>Gas used: {block.consumedGas}</div>
+          <div>Protocol version: {block.protocol}</div>
+          <div>Cycle: {block.metaCycle}</div>
+          <div>Cycle position: {block.metaCyclePosition}</div>
         </div>
       </div>
     </>

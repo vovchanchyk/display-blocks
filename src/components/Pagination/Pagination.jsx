@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import React, { useContext } from 'react';
 import { BlocksContext } from '../Provider/Provider';
 import styles from './Pagination.module.css';
